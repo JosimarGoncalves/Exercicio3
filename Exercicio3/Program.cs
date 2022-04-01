@@ -7,18 +7,18 @@ class Program {
     public static int[] posicaoX = new int[10];
     public static int[] posicaoY = new int[10];
     public static int valorMinimo = 0;
-    public static int valorMaximo = 5;
+    public static int valorMaximo = 10;
     public static int [] posicaoSobreposta = new int[10];
 
     
-
-
     static void Main()
     {
         Random posicaoAleatoria = new Random();
         var stopWatch = new Stopwatch();
 
         stopWatch.Start();
+
+        Console.WriteLine("Numeros sorteados de: {0} até {1} ", valorMinimo, valorMaximo  );
 
         for (int i = 0; i < posicaoX.Length; i++)
         {
@@ -30,8 +30,18 @@ class Program {
             posicaoY[i] = posicaoAleatoria.Next(valorMinimo, valorMaximo);
         }
 
-        Console.WriteLine("\nPosicao de X e Y:");
+       
 
+        Console.Write("Posicao de X e Y: "  );
+        Console.Write("[");
+
+        for (int i = 0; i < posicaoX.Length; i++)
+        {
+            Console.Write("{0} -", i);
+        }
+
+
+        Console.Write("]");
         Thread t1 = new Thread(Thread1);
         Thread t2 = new Thread(Thread2);
 
@@ -42,18 +52,17 @@ class Program {
         t1.Join();
         t2.Join();
 
+        PularLinha();
+
+        
 
         //for (int i = 0; i < posicaoX.Length; i++)
         //{
-        //    if (i == i++ )
+        //    if(posicaoX[i] == posicaoX[i++])
         //    {
-        //        Console.WriteLine("Deu merda");
-        //    }
+        //        Console.Write(" {0} - ",i);
+        //    }    
         //}
-
-        PularLinha();
-
-        Console.WriteLine("Palmeiras não tem mundial!!! Desisto desse exercicio ");
 
         stopWatch.Stop();
 
@@ -66,7 +75,8 @@ class Program {
 
     private static void Thread1()
     {
-        Console.Write("Eixo X (vetor X): " );
+        Console.Write("\nEixo X (vetor X): " );
+        Console.Write("[");
 
         for (int i = 0; i < posicaoX.Length; i++)
         {
@@ -75,15 +85,16 @@ class Program {
           
         }
 
-        
+        Console.Write("]");
 
 
-       
-        
+
     }
     private static void Thread2()
     {        
-        Console.Write("\nEixo Y (vetorY): ");
+        Console.Write("\nEixo Y (vetor Y): ");
+
+        Console.Write("[");
 
         for (int i = 0 ; i < posicaoY.Length; i++)
         {
@@ -91,8 +102,8 @@ class Program {
            Console.Write(posicaoY[i] + " - ");
          
         }
+        Console.Write("]");
 
-        
 
     }
 
