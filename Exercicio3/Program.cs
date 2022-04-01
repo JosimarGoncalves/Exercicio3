@@ -53,6 +53,8 @@ class Program {
 
         PularLinha();
 
+        Console.WriteLine("Palmeiras não tem mundial!!! Desisto desse exercicio ");
+
         stopWatch.Stop();
 
         
